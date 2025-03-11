@@ -19,7 +19,7 @@ if __name__ == '__main__':
     username = "ubuntu"
 
 # run application update and upgrade commands
-    upgrade_command = "sudo apt update && sudo apt upgrade -y"
+    upgrade_command = "sudo apt-get update && sudo apt-get upgrade -y"
     my_server = Server(server_ip, rsa_key, username)
 
 # ping and print results
