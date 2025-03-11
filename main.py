@@ -12,17 +12,17 @@ def print_program_info():
 if __name__ == '__main__':
     print_program_info()
 
-    # Server details
+    # TODO - Create a Server object
     server_ip = "34.219.149.76"
     # Key path location
     rsa_key = r"C:\Tim_key.pem"
     username = "ubuntu"
 
 # run application update and upgrade commands
-    upgrade_command = "sudo apt update && sudo apt upgrade -y"
+    upgrade_command = "sudo apt-get update && sudo apt-get upgrade -y"
     my_server = Server(server_ip, rsa_key, username)
 
-# ping and print results
+# TODO - Call Ping method and print results
 if my_server.ping():
     print(f"Server {server_ip} is reachable.")
     print('Updating...')
