@@ -1,13 +1,23 @@
-# This is the template code for the CNE335 Final Project
-# Justin Ellis
-# CNE 335 Fall
+# Tim Nguyen
+# CNE 335 3-10-2025
+# Automation Ping Final Project
+from Server import Server
+
 
 def print_program_info():
     # TODO - Change your name
-    print("Server Automator v0.1 by Your Name")
+    print("Server Automator v0.1 by Your Tim Nguyen")
 
 # This is the entry point to our program
 if __name__ == '__main__':
     print_program_info()
     # TODO - Create a Server object
+    server = Server('ec2-35-85-53-16.us-west-2.compute.amazonaws.com', 'D:\Downloads\Tim_key.pem')
+
     # TODO - Call Ping method and print the results
+    command = 'sudo apt update && sudo apt upgrade -y'
+    # Call Ping and print results
+    if server.ping():
+        print("Updating server...")
+        # server.run_command(command)
+        ssh_result = server.run_command(command)
