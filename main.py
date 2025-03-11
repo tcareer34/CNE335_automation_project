@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # Server details
     server_ip = "34.219.149.76"
     # Key path location
-    rsa_key = r"C:\tnguyen_335_ppk.ppk"
+    rsa_key = r"C:\Tim_key.pem"
     username = "ubuntu"
 
 # run application update and upgrade commands
@@ -28,6 +28,7 @@ if my_server.ping():
     print('Updating...')
     ssh_result = my_server.run_command(upgrade_command)
     print("Upgrade output: \n", ssh_result)
+
 else:
     print(f"Server {server_ip} is unreachable.")
 
