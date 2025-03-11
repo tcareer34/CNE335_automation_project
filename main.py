@@ -30,6 +30,6 @@ if my_server.ping():
     print("Upgrade output: \n", ssh_result)
 
 else:
-    print(f"Server {server_ip} is unreachable.")
+    print(f"Server {server_ip} is unreachable, please check the server's public IPv4 address.")
 
 
