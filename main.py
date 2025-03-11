@@ -12,7 +12,7 @@ def print_program_info():
 if __name__ == '__main__':
     print_program_info()
     # TODO - Create a Server object
-    server = Server('ubuntu@35.85.53.16', 'C:\Tim_key.pem')
+    server = Server('ubuntu@172.31.31.193', 'C:\Tim_key.pem')
 
     # TODO - Call Ping method and print the results
     command = 'sudo apt update && sudo apt upgrade -y'
