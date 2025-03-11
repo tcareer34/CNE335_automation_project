@@ -27,7 +27,7 @@ if my_server.ping():
     print(f"Server {server_ip} is reachable.")
     print('Updating...')
     ssh_result = my_server.run_command(upgrade_command)
-#   print("Upgrade output: \n", ssh_result)
+    print("Upgrade output: \n", ssh_result)
 else:
     print(f"Server {server_ip} is unreachable.")
 
