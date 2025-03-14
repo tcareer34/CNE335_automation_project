@@ -36,7 +36,7 @@ class Server:
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key)  # Fix key handling
+            my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key, password=None)  # Fix key handling
             ssh.connect(hostname=self.server_ip, username=self.username, pkey=my_key)
 
             stdin, stdout, stderr = ssh.exec_command(command)
