@@ -3,7 +3,6 @@
 # Automation Project
 
 import os
-from putty.keys import PPKKey
 import paramiko
 
 #class Server:
@@ -20,44 +19,36 @@ import paramiko
     # Code for Automated SSH Assignment
 
 class Server:
-    """ Server class for representation and manipulating servers. """
 
-    def __init__(self, server_ip, rsa_key, upgrade, username):
+    def __init__(self, server_ip, rsa_key, username):
         self.server_ip = server_ip
         self.rsa_key = rsa_key
-        self.upgrade = upgrade
         self.username = username
 
 
     def ping(self):
         # TODO - Use os module to ping the server
-        result = os.system("ping -n 5 %s" % self.server_ip)
-        #command = f'ping -c 5 {self.server_ip}' if os.name != 'nt' else f'ping -n 5 {self.server_ip}'
-        #return os.system(command) == 0
-        return result
+        command = f'ping -c 5 {self.server_ip}' if os.name != 'nt' else f'ping -n 5 {self.server_ip}'
+        return os.system(command) == 0
 
-    #def run_command(self, command):
-    def upgrade(self):
+    def run_command(self, command):
         """Run upgrade command via SSH."""
+        try:
+            ssh = paramiko.SSHClient()
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key)  # Fix key handling
+            ssh.connect(hostname=self.server_ip, username=self.username, pkey=my_key)
 
-        ssh = paramiko.SSHClient()
+            stdin, stdout, stderr = ssh.exec_command(command)
 
-        my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key)  # Fix key handling
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname=self.server_ip, username=self.username, pkey=my_key)
+            output = stdout.read().decode().strip()
+            error = stderr.read().decode().strip()
 
-        stdin, stdout, stderr = ssh.exec_command(self.command)
-        for line in stdout.read().splitlines():
-            print(line)
+            ssh.close()  # Ensure proper cleanup
 
-        #    output = stdout.read().decode().strip()
-        #    error = stderr.read().decode().strip()
+            if error:
+                return f"Error:\n{error}"
+            return output
 
-        ssh.close()  # Ensure proper cleanup / disconnect
-
-        #    if error:
-        #        return f"Error:\n{error}"
-        #    return output
-
-        #except paramiko.SSHException as e:
-        #    return f"SSH error: {e}"
+        except paramiko.SSHException as e:
+            return f"SSH error: {e}"        #    return f"SSH error: {e}"

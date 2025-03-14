@@ -15,28 +15,19 @@ if __name__ == '__main__':
     # TODO - Create a Server object
     server_ip = "34.219.149.76"
     # Key path location
-    rsa_key = r"C:\tnguyen_335_ppk.ppk"
-    username = 'ubuntu'
+    rsa_key = r"C:\tim_cne335.pem"
+    username = "ubuntu"
 
 # run application update and upgrade commands
     upgrade_command = "sudo apt-get update && sudo apt-get upgrade -y"
-    # Server object created
-    my_serv = Server(server_ip, rsa_key, upgrade_command, username)
+    my_server = Server(server_ip, rsa_key, username)
 
 # TODO - Call Ping method and print results
-    #print(my_serv.ping())
-    #print('Updating Server...')
-    #ssh_result = my_serv.upgrade
-    #print(ssh_result)
+if my_server.ping():
+    print(f"Server {server_ip} is reachable.")
+    print('Updating...')
+    ssh_result = my_server.run_command(upgrade_command)
+    print("Upgrade output: \n", ssh_result)
 
-    # Ping server
-    print("Pinging server...")
-    if my_serv.ping():
-        print("Ping Successful!")
-        print('Updating Server...')
-
-        # Run SSH upgrade command
-        ssh_result = my_serv.run_upgrade()
-        print(ssh_result)
-    else:
-        print("Server not reachable.")
+else:
+    print(f"Server {server_ip} is unreachable, please check the server's public IPv4 address.")
