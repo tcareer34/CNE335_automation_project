@@ -19,7 +19,7 @@ import paramiko
     # Code for Automated SSH Assignment
 
 class Server:
-
+    # TODO -
     def __init__(self, server_ip, rsa_key, username):
         self.server_ip = server_ip
         self.rsa_key = rsa_key
