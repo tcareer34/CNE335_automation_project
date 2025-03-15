@@ -6,7 +6,7 @@
 
 The project utilizes **RSA key-based authentication** for secure communication and command execution via SSH. Here are some key details:
 
-- **Private Key Location**: Users must specify the location of their private RSA key file (e.g., `C:\key.pem`) in the code to establish secure SSH connections to the server.
+- **Private Key Location**: Users must specify the location of their private RSA key file (e.g., `tim_cne335.pem`) in the code to establish secure SSH connections to the server.
   
 - **Key Permissions**: The private RSA key file must have appropriate permissions (i.e., not publicly readable). It is crucial that this file remains private to ensure the security of the server communication.
 
