@@ -29,7 +29,7 @@ This project automates the following tasks:
 - Required Python modules:
   - `os`
   - `paramiko`
-- Please download tim_cne335.pem shared in this repository and place it in your c:\ drive for SSH authentication 
+- Please download the tim_cne335.pem file shared in this repository and place it in your c:\ drive for SSH authentication 
 - A server with SSH access
 
 ---
