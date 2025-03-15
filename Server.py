@@ -1,3 +1,7 @@
+# TIm Nguyen
+# CNE 335 3-13-2025
+# Automation Project
+
 import os
 import paramiko
 
@@ -15,7 +19,7 @@ import paramiko
     # Code for Automated SSH Assignment
 
 class Server:
-
+    # TODO -
     def __init__(self, server_ip, rsa_key, username):
         self.server_ip = server_ip
         self.rsa_key = rsa_key
@@ -32,7 +36,7 @@ class Server:
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key)  # Fix key handling
+            my_key = paramiko.RSAKey.from_private_key_file(self.rsa_key, password=None)  # Fix key handling
             ssh.connect(hostname=self.server_ip, username=self.username, pkey=my_key)
 
             stdin, stdout, stderr = ssh.exec_command(command)
@@ -47,4 +51,4 @@ class Server:
             return output
 
         except paramiko.SSHException as e:
-            return f"SSH error: {e}"
+            return f"SSH error: {e}"        #    return f"SSH error: {e}"

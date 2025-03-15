@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # TODO - Create a Server object
     server_ip = "34.219.149.76"
     # Key path location
-    rsa_key = r"C:\Tim_key.pem"
+    rsa_key = r"C:\tim_cne335.pem"
     username = "ubuntu"
 
 # run application update and upgrade commands
@@ -31,5 +31,3 @@ if my_server.ping():
 
 else:
     print(f"Server {server_ip} is unreachable, please check the server's public IPv4 address.")
-
-
