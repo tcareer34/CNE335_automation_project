@@ -23,9 +23,6 @@ if __name__ == '__main__':
 # TODO - Call Ping method and print results
 if my_server.ping():
     print(f"Server {server_ip} is reachable.")
- #  print('Searching for server updates...')
- #  ssh_result = my_server.run_command(upgrade_command)
- #  print("Update results: \n", ssh_result)
 
 else:
     print(f"Server {server_ip} is unreachable, please check the server's public IPv4 address.")
