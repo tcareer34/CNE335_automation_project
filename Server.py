@@ -20,9 +20,8 @@ import paramiko
 
 class Server:
     # TODO -
-    def __init__(self, server_ip, rsa_key, username):
+    def __init__(self, server_ip, username):
         self.server_ip = server_ip
-        self.rsa_key = rsa_key
         self.username = username
 
 

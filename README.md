@@ -56,7 +56,6 @@ if __name__ == '__main__':
     print_program_info()
 
     server_ip = "34.219.149.76"
-    rsa_key = r"C:\\tim_cne335.pem"
     username = "ubuntu"
 
     upgrade_command = "sudo apt-get update && sudo apt-get upgrade -y"
